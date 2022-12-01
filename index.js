@@ -4,6 +4,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static('build'));
 
 let notes = [
   {
@@ -35,10 +36,6 @@ const requestLogger = (request, response, next) => {
 };
 
 app.use(requestLogger);
-
-app.get('/', (request, response) => {
-  response.send('<h1>Hello World!</h1>');
-});
 
 app.get('/api/notes', (request, response) => {
   response.json(notes);
