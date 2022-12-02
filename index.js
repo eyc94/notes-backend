@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const Note = require('./models/note')
+const Note = require('./models/note');
 const app = express();
 
 const requestLogger = (request, response, next) => {
@@ -89,7 +89,7 @@ const errorHandler = (error, request, response, next) => {
   }
 
   next(error);
-}
+};
 
 app.use(errorHandler);
 
