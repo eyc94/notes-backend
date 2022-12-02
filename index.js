@@ -4,10 +4,6 @@ const cors = require('cors');
 const Note = require('./models/note')
 const app = express();
 
-app.use(cors());
-app.use(express.json());
-app.use(express.static('build'));
-
 const requestLogger = (request, response, next) => {
   console.log('Method:', request.method);
   console.log('Path:  ', request.path);
@@ -16,7 +12,10 @@ const requestLogger = (request, response, next) => {
   next();
 };
 
+app.use(express.static('build'));
+app.use(express.json());
 app.use(requestLogger);
+app.use(cors());
 
 app.get('/api/notes', (request, response) => {
   Note.find({}).then(notes => {
