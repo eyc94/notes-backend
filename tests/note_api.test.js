@@ -106,7 +106,7 @@ describe('addition of a new note', () => {
 });
 
 describe('deletion of a note', () => {
-  test('succeeds with status code 204 if id is invalid', async () => {
+  test('succeeds with status code 204 if id is valid', async () => {
     const notesAtStart = await helper.notesInDb();
     const noteToDelete = notesAtStart[0];
   
